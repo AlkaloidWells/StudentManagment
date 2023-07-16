@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null"  pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d912e8e5-0f2e-4897-a66d-3861174cfccd">
+	<property name="template.type" value="columnar"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="112"/>
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="sid2" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[6]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT studentinfo.Surname, studentinfo.sex, studentinfo.dob, studentinfo.pob, studentinfo.nation, studentinfo.roo, slecture.HQtion, slecture.Cycle, slecture.Department
+FROM User INNER JOIN (studentinfo INNER JOIN slecture ON studentinfo.ID = slecture.SID) ON User.LOID = studentinfo.LOID
+WHERE (((slecture.ID)=$P{sid2}));]]>
+	</queryString>
+	<field name="Surname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sex" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dob" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pob" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nation" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="roo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="HQtion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Cycle" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Department" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="120" y="0" width="435" height="103" uuid="a98fd4d5-f06f-4594-9321-f9427481fa2b"/>
+				<textElement>
+					<font size="80" isBold="false"/>
+				</textElement>
+				<text><![CDATA[YouNiversity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="150" y="103" width="217" height="29" uuid="43cbbc9b-22a6-4fb2-8c59-90190585a4e4"/>
+				<textElement>
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lecturer Application]]></text>
+			</staticText>
+			<image>
+				<reportElement x="4" y="0" width="116" height="103" uuid="200aefba-efd4-472c-a62e-803e10e17624"/>
+				<imageExpression><![CDATA["A:\\Project 2021.2022.sim1\\SDT\\STUDM\\StudentManage1\\src\\BPrintOut\\bg_036.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="539" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="0" y="62" width="202" height="31" forecolor="#000000" uuid="387b48f9-bb62-4098-bdd5-69a52085e8a2"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="287" y="62" width="266" height="31" uuid="1b92fb93-87bd-4091-8e85-0eaf7927b075"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Surname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="0" y="93" width="202" height="35" forecolor="#000000" uuid="2a5f5554-3ac3-4e5c-b37f-d76054e63b0f"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[SEX]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="287" y="93" width="268" height="35" uuid="b7ca32e9-0071-41ea-bd1e-1ec422a837f7"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sex}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="0" y="165" width="202" height="33" forecolor="#000000" uuid="5d93bb18-0e3b-421f-9be0-518d6b2e3e6c"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[DATE OF BIRTH]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="289" y="165" width="264" height="33" uuid="7f7a6c4d-6d49-4049-a147-1febeea81b03"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dob}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="0" y="198" width="202" height="32" forecolor="#000000" uuid="d49a1abc-960c-4062-93aa-f1ded9f15743"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[PLACE OF BIRTH]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="289" y="198" width="264" height="32" uuid="a42d8993-3241-4ba2-8305-e489998314a6"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pob}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="0" y="267" width="202" height="35" forecolor="#000000" uuid="36c8a95a-98ed-4961-98e9-ccc41604994a"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[NATIONALITY]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="287" y="267" width="268" height="35" uuid="70db4b08-aee0-4a5f-979e-e3dbea9eb1b6"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="0" y="230" width="202" height="37" forecolor="#000000" uuid="a0cb4390-f537-46b6-b9d9-327e24ca840f"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[REGION OF ORIGINE]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="289" y="230" width="266" height="37" uuid="821c7842-ac31-4998-9120-222a33f4e15a"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="0" y="341" width="202" height="33" forecolor="#000000" uuid="c948e740-0f05-426d-b6e8-4235e8fd6efa"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[HIGHEST QUALIFICATION]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="287" y="341" width="268" height="33" uuid="580367eb-6db7-4c3b-be00-5995803de4ae"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HQtion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="0" y="374" width="202" height="30" forecolor="#000000" uuid="9c972efa-36c0-463f-be71-7ca62aa463e7"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CYCLE]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="287" y="376" width="268" height="30" uuid="fc5efd5b-10e7-4b24-b242-7e4dcdc92854"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Cycle}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="0" y="404" width="202" height="35" forecolor="#000000" uuid="56aa4c8b-f761-4b36-aea4-af8520a69a16"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[DEPARTMENTR]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="287" y="406" width="266" height="33" uuid="d638fa1e-d628-4127-8328-afc5b768d6fd"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Department}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="302" width="553" height="26" uuid="81e84eb9-a5f2-4d57-b55a-a03fe2c2de37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="128" width="553" height="27" uuid="919d9283-68bc-48dc-be24-0e2129558cbf"/>
+			</rectangle>
+			<image>
+				<reportElement x="0" y="12" width="553" height="62" uuid="3ed86e5b-ba56-4139-8992-f29f1bb64f37"/>
+				<imageExpression><![CDATA["A:\\Project 2021.2022.sim1\\SDT\\STUDM\\StudentManage1\\src\\BPrintOut\\bg_035.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="233" y="12" width="320" height="50" uuid="78afa5cb-4bfb-4e62-b3e0-5edcb6d2ab28"/>
+				<textElement>
+					<font size="36"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Surname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="150" y="0" width="83" height="62" uuid="995333e7-493e-49d2-a27b-b3d60b10c9b4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="24" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Mr/Mis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="128" width="100" height="27" forecolor="#0033CC" uuid="a5f24543-484b-4764-a402-cbdfef364354"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century" size="14"/>
+				</textElement>
+				<text><![CDATA[LOCATION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="302" width="100" height="26" forecolor="#0033CC" uuid="12f94c1a-47fe-45e7-82b2-12fccedd2da1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century" size="14"/>
+				</textElement>
+				<text><![CDATA[EDUCATION]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
